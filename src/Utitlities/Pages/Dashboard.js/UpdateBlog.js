@@ -10,18 +10,25 @@ const UpdateBlog = () => {
   const [blog, setBlog] = useState({});
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const [loader, setLoader] = useState(true);
   //   console.log(blog);
   useEffect(() => {
+    let cancel = false;
+
     setLoader(true);
     axios
       .get(`https://serene-ocean-67383.herokuapp.com/blogs/edit/${id}`)
       .then((res) => {
+        if (cancel) return;
+
         setBlog(res.data);
         setLoader(false);
       })
       .finally(() => setLoader(false));
+
+    return () => {
+      cancel = true;
+    };
   }, [id]);
 
   const onSubmit = async (data) => {

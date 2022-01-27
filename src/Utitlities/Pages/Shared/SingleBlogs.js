@@ -9,12 +9,16 @@ const SingleBlogs = () => {
   const [blog, setBlog] = useState({});
 
   useEffect(() => {
+    let cancel = false;
     axios
       .get(`https://serene-ocean-67383.herokuapp.com/blogs/edit/${id}`)
       .then((res) => {
-        // console.log("hello");
+        if (cancel) return;
         setBlog(res.data);
       });
+    return () => {
+      cancel = true;
+    };
   }, []);
 
   return (

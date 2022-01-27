@@ -14,13 +14,20 @@ const ShowReview = () => {
   };
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
+    let cancel = false;
+
     axios
       .get(`https://serene-ocean-67383.herokuapp.com/reviews`)
       .then((res) => {
+        if (cancel) return;
+
         setReviews(res.data);
       });
+    return () => {
+      cancel = true;
+    };
   }, []);
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div className="container mx-auto py-20 overflow-hidden">
       <div className="text-center">

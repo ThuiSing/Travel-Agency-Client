@@ -8,15 +8,22 @@ const MyPost = () => {
   const [loader, setLoader] = useState(true);
   const { user } = useAuth();
   useEffect(() => {
+    let cancel = false;
+
     setLoader(true);
     axios
       .get(`https://serene-ocean-67383.herokuapp.com/blogs/${user.email}`)
       .then((res) => {
-        // console.log(res);
+        if (cancel) return;
+
         setLoader(false);
         setPost(res.data);
       })
       .finally(() => setLoader(false));
+
+    return () => {
+      cancel = true;
+    };
   }, []);
 
   //delete

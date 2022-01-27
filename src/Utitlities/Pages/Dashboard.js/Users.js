@@ -7,9 +7,15 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://serene-ocean-67383.herokuapp.com/users")
-      .then((res) => setUsers(res.data));
+    let cancel = false;
+
+    axios.get("https://serene-ocean-67383.herokuapp.com/users").then((res) => {
+      if (cancel) return;
+      setUsers(res.data);
+    });
+    return () => {
+      cancel = true;
+    };
   }, []);
 
   const handleEmail = (e) => {

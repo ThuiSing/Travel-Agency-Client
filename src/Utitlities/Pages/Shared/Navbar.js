@@ -9,8 +9,6 @@ const Navbar = () => {
   const [showBgOnScroll, setShowBgOnScroll] = useState(false);
   const location = useLocation();
 
-  // console.log(user);
-
   window.addEventListener("scroll", () => {
     if (window.scrollY >= 10) {
       setShowBgOnScroll(true);

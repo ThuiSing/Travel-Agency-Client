@@ -109,7 +109,11 @@ const AddPost = () => {
           {errors.exampleRequired && <span>This field is required</span>}
         </div>
 
-        <input className="bg-gray-500 px-5" type="submit" value="Post" />
+        <input
+          className="bg-neutral-700 px-12 py-2 text-white"
+          type="submit"
+          value="Post"
+        />
       </form>
     </div>
   );

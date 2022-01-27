@@ -10,20 +10,26 @@ const SharedBlogs = () => {
   const limit = 10;
 
   useEffect(() => {
+    let cancel = false;
+
     setLoader(true);
     axios
       .get(
         `https://serene-ocean-67383.herokuapp.com/blogs/status?page=${selectedPage}&&showPages=${limit}`
       )
       .then((res) => {
+        if (cancel) return;
         setBlogs(res.data.result);
         const count = res.data.count;
         const showPage = Math.ceil(count / limit);
         setPage(showPage);
-
         setLoader(false);
       })
+
       .finally(() => setLoader(false));
+    return () => {
+      cancel = true;
+    };
   }, []);
   return (
     <div className="container mx-auto py-12">

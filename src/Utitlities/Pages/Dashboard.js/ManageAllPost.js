@@ -6,15 +6,20 @@ const ManageAllPost = () => {
   const [blogs, setBlogs] = useState([]);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
+    let cancel = false;
     setLoader(true);
     axios
       .get("https://serene-ocean-67383.herokuapp.com/blogs")
       .then((res) => {
+        if (cancel) return;
         setBlogs(res.data);
-        // console.log(res.data);
         setLoader(false);
       })
       .finally(() => setLoader(false));
+
+    return () => {
+      cancel = true;
+    };
   }, []);
 
   const statusStyle = (status) => {
