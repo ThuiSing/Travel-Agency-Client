@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
 
 const UpdateBlog = () => {
   const { id } = useParams();

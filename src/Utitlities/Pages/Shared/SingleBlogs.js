@@ -19,7 +19,7 @@ const SingleBlogs = () => {
     return () => {
       cancel = true;
     };
-  }, []);
+  }, [id]);
 
   return (
     <div>

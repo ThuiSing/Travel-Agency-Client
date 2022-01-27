@@ -30,7 +30,7 @@ const SharedBlogs = () => {
     return () => {
       cancel = true;
     };
-  }, []);
+  }, [selectedPage]);
   return (
     <div className="container mx-auto py-12">
       <div className="text-center pb-10">

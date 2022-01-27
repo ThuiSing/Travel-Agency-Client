@@ -24,7 +24,7 @@ const MyPost = () => {
     return () => {
       cancel = true;
     };
-  }, []);
+  }, [user?.email]);
 
   //delete
   const handleCancel = (id) => {
