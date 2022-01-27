@@ -14,9 +14,11 @@ const ShowReview = () => {
   };
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/reviews`).then((res) => {
-      setReviews(res.data);
-    });
+    axios
+      .get(`https://serene-ocean-67383.herokuapp.com/reviews`)
+      .then((res) => {
+        setReviews(res.data);
+      });
   }, []);
   console.log(reviews);
   return (

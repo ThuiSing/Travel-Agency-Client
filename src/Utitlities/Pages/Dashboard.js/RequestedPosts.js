@@ -14,7 +14,9 @@ const RequestedPosts = () => {
     const confirm = window.confirm("Are you sure to approve it?");
     confirm &&
       axios
-        .put(`http://localhost:5000/blogs/update-status/${id}`)
+        .put(
+          `https://serene-ocean-67383.herokuapp.com/blogs/update-status/${id}`
+        )
         .then((res) => {
           if (res.data.matchedCount > 0) {
             alert("Successfully Approved");

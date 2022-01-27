@@ -13,7 +13,7 @@ const SharedBlogs = () => {
     setLoader(true);
     axios
       .get(
-        `http://localhost:5000/blogs/status?page=${selectedPage}&&showPages=${limit}`
+        `https://serene-ocean-67383.herokuapp.com/blogs/status?page=${selectedPage}&&showPages=${limit}`
       )
       .then((res) => {
         setBlogs(res.data.result);
