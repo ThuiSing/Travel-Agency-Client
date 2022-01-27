@@ -20,7 +20,7 @@ const SingleBlogs = () => {
   return (
     <div>
       <Navbar />
-      <div className="relative">
+      <div className="relative md:mt-24 ">
         <div className="h-96 overflow-hidden flex justify-center items-end relative">
           <img
             className="w-full"
