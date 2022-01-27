@@ -16,7 +16,7 @@ const UpdateBlog = () => {
   useEffect(() => {
     setLoader(true);
     axios
-      .get(`http://localhost:5000/blogs/edit/${id}`)
+      .get(`https://serene-ocean-67383.herokuapp.com/blogs/edit/${id}`)
       .then((res) => {
         setBlog(res.data);
         setLoader(false);
@@ -37,12 +37,14 @@ const UpdateBlog = () => {
     formData.append("authorImg", blog.authorImg);
     formData.append("date", blog.date);
     formData.append("status", data.status);
-    axios.put(`http://localhost:5000/blogs/${id}`, formData).then((res) => {
-      console.log(res);
-      if (res.data.modifiedCount > 0) {
-        alert("changed successfully");
-      }
-    });
+    axios
+      .put(`https://serene-ocean-67383.herokuapp.com/blogs/${id}`, formData)
+      .then((res) => {
+        console.log(res);
+        if (res.data.modifiedCount > 0) {
+          alert("changed successfully");
+        }
+      });
   };
 
   return (

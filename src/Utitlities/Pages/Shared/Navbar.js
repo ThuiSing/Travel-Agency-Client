@@ -33,7 +33,7 @@ const Navbar = () => {
         </div>
         <div>
           <Link to="/">
-            <h1 className="font-bold text-3xl">LOGO</h1>
+            <h1 className="font-bold text-3xl">SMARTER TRAVELS</h1>
           </Link>
         </div>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </div>
-          <h2 className="text-3xl font-bold">LOGO</h2>
+          <h2 className="text-3xl font-bold">SMARTER TRAVELS</h2>
           <div className="flex flex-col space-y-2 mt-10">
             <NavLink
               to="/"

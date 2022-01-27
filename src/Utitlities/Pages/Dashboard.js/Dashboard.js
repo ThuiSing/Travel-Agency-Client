@@ -54,7 +54,7 @@ const Dashboard = () => {
         </div>
         <div className="my-7">
           <Link to="/">
-            <h4 className="text-2xl">LOGO</h4>
+            <h4 className="text-2xl">SMARTER TRAVELS</h4>
           </Link>
         </div>
         <div>
@@ -63,7 +63,7 @@ const Dashboard = () => {
               <NavLink
                 to={`/dashboard`}
                 className={(status) =>
-                  `text-md px-5 py-3 ${
+                  `text-md  py-3 w-40 mx-auto text-center ${
                     status.isActive
                       ? "bg-neutral-800 text-white"
                       : "bg-transparent"
@@ -75,7 +75,7 @@ const Dashboard = () => {
               <NavLink
                 to={`/dashboard/add-post`}
                 className={(status) =>
-                  `text-md px-5 py-3 ${
+                  `text-md py-3 w-40 mx-auto text-center ${
                     status.isActive
                       ? "bg-neutral-800 text-white"
                       : "bg-transparent"
@@ -87,7 +87,7 @@ const Dashboard = () => {
               <NavLink
                 to={`/dashboard/review`}
                 className={(status) =>
-                  `text-md px-5 py-3 ${
+                  `text-md py-3 w-40 mx-auto text-center ${
                     status.isActive
                       ? "bg-neutral-800 text-white"
                       : "bg-transparent"
@@ -96,6 +96,48 @@ const Dashboard = () => {
               >
                 Review Website
               </NavLink>
+              {isAdmin && (
+                <NavLink
+                  to={`/dashboard/users`}
+                  className={(status) =>
+                    `text-md py-3 w-40 mx-auto text-center ${
+                      status.isActive
+                        ? "bg-neutral-800 text-white"
+                        : "bg-transparent"
+                    } `
+                  }
+                >
+                  All Users
+                </NavLink>
+              )}
+              {isAdmin && (
+                <NavLink
+                  to={`/dashboard/manage-post`}
+                  className={(status) =>
+                    `text-md py-3 w-40 mx-auto text-center ${
+                      status.isActive
+                        ? "bg-neutral-800 text-white"
+                        : "bg-transparent"
+                    } `
+                  }
+                >
+                  Edit All Blogs
+                </NavLink>
+              )}
+              {isAdmin && (
+                <NavLink
+                  to={`/dashboard/requested-post`}
+                  className={(status) =>
+                    `text-md py-3 w-40 mx-auto text-center ${
+                      status.isActive
+                        ? "bg-neutral-800 text-white"
+                        : "bg-transparent"
+                    } `
+                  }
+                >
+                  Requested Blogs
+                </NavLink>
+              )}
             </div>
             <div className="mt-16">
               <button
@@ -111,7 +153,7 @@ const Dashboard = () => {
       <div className="fixed bg-white w-72 hidden top-0 h-screen border-r-2 md:block ">
         <div className="px-4 pt-6 text-center">
           <Link to="/">
-            <h4 className="text-2xl">LOGO</h4>
+            <h4 className="text-2xl">SMARTER TRAVELS</h4>
           </Link>
         </div>
         <div className="flex flex-col justify-between h-5/6 ">

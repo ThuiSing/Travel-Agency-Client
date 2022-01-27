@@ -112,15 +112,17 @@ const useFirebase = () => {
 
   //Check admin or not
   useEffect(() => {
-    axios.get(`http://localhost:5000/users/${user?.email}`).then((res) => {
-      setIsAdmin(res.data?.isAdmin);
-      // console.log(res);
-    });
+    axios
+      .get(`https://serene-ocean-67383.herokuapp.com/users/${user?.email}`)
+      .then((res) => {
+        setIsAdmin(res.data?.isAdmin);
+        // console.log(res);
+      });
   }, [user?.email]);
 
   //save user data to database
   const SaveUserDb = (name, email, method) => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://serene-ocean-67383.herokuapp.com/users", {
       method: method,
       headers: {
         "Content-Type": "application/json",

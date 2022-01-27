@@ -7,7 +7,9 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/users").then((res) => setUsers(res.data));
+    axios
+      .get("https://serene-ocean-67383.herokuapp.com/users")
+      .then((res) => setUsers(res.data));
   }, []);
 
   const handleEmail = (e) => {
@@ -19,12 +21,14 @@ const Users = () => {
     const filter =
       /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (filter.test(email)) {
-      axios.put(`http://localhost:5000/users/${email}`).then((res) => {
-        if (res.data.modifiedCount > 0) {
-          alert("Making Admin Successfully ");
-          setShowErr("");
-        }
-      });
+      axios
+        .put(`https://serene-ocean-67383.herokuapp.com/users/${email}`)
+        .then((res) => {
+          if (res.data.modifiedCount > 0) {
+            alert("Making Admin Successfully ");
+            setShowErr("");
+          }
+        });
     } else {
       setShowErr("Please Enter validate Email !");
     }

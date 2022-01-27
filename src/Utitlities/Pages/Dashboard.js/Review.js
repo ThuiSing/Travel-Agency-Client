@@ -21,13 +21,15 @@ const Review = () => {
       ? user.photoURL
       : "https://cdn-icons-png.flaticon.com/512/64/64572.png";
 
-    axios.post("http://localhost:5000/reviews", data).then((res) => {
-      console.log(res);
-      if (res.data.insertedId) {
-        alert("Review Submitted Successfully");
-        reset("");
-      }
-    });
+    axios
+      .post("https://serene-ocean-67383.herokuapp.com/reviews", data)
+      .then((res) => {
+        console.log(res);
+        if (res.data.insertedId) {
+          alert("Review Submitted Successfully");
+          reset("");
+        }
+      });
   };
 
   return (

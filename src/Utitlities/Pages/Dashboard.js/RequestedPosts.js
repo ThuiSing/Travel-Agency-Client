@@ -6,7 +6,7 @@ const RequestedPosts = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/blogs/status`)
+      .get(`https://serene-ocean-67383.herokuapp.com/blogs/status`)
       .then((res) => setBlogs(res.data));
   }, []);
 

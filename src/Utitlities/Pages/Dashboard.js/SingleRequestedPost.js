@@ -17,9 +17,11 @@ const SingleRequestedPost = ({ blog }) => {
     setSetOpenInput(false);
     const modifiedData = { ...blog };
     modifiedData.status = inputStatus;
-    axios.put(`http://localhost:5000/blogs`, modifiedData).then((res) => {
-      console.log(res);
-    });
+    axios
+      .put(`https://serene-ocean-67383.herokuapp.com/blogs`, modifiedData)
+      .then((res) => {
+        console.log(res);
+      });
   };
   return (
     <>

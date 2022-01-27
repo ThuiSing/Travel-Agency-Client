@@ -9,7 +9,7 @@ const MyPost = () => {
   useEffect(() => {
     setLoader(true);
     axios
-      .get(`http://localhost:5000/blogs/${user.email}`)
+      .get(`https://serene-ocean-67383.herokuapp.com/blogs/${user.email}`)
       .then((res) => {
         console.log(res);
         setLoader(false);
@@ -22,13 +22,15 @@ const MyPost = () => {
   const handleCancel = (id) => {
     const cancelConfirm = window.confirm("Are you sure to cancel your Order?");
     cancelConfirm &&
-      axios.delete(`http://localhost:5000/blogs/${id}`).then((res) => {
-        if (res.data.deletedCount >= 0) {
-          alert("successfully Canceled");
-          const exist = post.filter((order) => order._id !== id);
-          setPost(exist);
-        }
-      });
+      axios
+        .delete(`https://serene-ocean-67383.herokuapp.com/blogs/${id}`)
+        .then((res) => {
+          if (res.data.deletedCount >= 0) {
+            alert("successfully Canceled");
+            const exist = post.filter((order) => order._id !== id);
+            setPost(exist);
+          }
+        });
   };
 
   const statusStyle = (status) => {

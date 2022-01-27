@@ -31,7 +31,7 @@ const Register = () => {
       <div className="w-1/2">
         <div className="text-center">
           <Link to="/">
-            <h2 className="text-3xl mb-8 font-bold">LOGO</h2>
+            <h2 className="text-3xl mb-8 font-bold">SMARTER TRAVELS</h2>
           </Link>
         </div>
         <form
