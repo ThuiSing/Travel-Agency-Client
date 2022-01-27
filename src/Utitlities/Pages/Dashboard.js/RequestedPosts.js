@@ -7,10 +7,12 @@ const RequestedPosts = () => {
   useEffect(() => {
     let cancel = false;
 
-    axios.get(`http://localhost:5000/blogs/pending`).then((res) => {
-      if (cancel) return;
-      setBlogs(res.data);
-    });
+    axios
+      .get(`https://serene-ocean-67383.herokuapp.com/blogs/pending`)
+      .then((res) => {
+        if (cancel) return;
+        setBlogs(res.data);
+      });
 
     return () => {
       cancel = true;
