@@ -27,6 +27,8 @@ const Users = () => {
           if (res.data.modifiedCount > 0) {
             alert("Making Admin Successfully ");
             setShowErr("");
+            const filter = users.find((user) => user.email === email);
+            filter.role = "admin";
           }
         });
     } else {
@@ -46,18 +48,18 @@ const Users = () => {
         />
         <button
           onClick={handleMakeAdmin}
-          className="bg-gray-800 text-white  hover:bg-gray-300 hover:text-gray-900 w-56 py-3 transition-all"
+          className="bg-neutral-800 text-white  hover:bg-neutral-300 hover:text-neutral-900 w-56 py-3 transition-all"
         >
           Make Admin
         </button>
       </div>
       <h3 className="text-red-600 font-medium">{showErr}</h3>
-      <div className="mt-5 border-t-2 border-gray-400 pt-5">
+      <div className="mt-5 border-t-2 border-neutral-400 pt-5">
         <h3 className="text-2xl font-medium">Show All User :</h3>
         <div className="mt-4">
           <table className="table-auto w-full text-center">
             <thead>
-              <tr className="bg-gray-800 text-white h-10">
+              <tr className="bg-neutral-800 text-white h-10">
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -66,9 +68,11 @@ const Users = () => {
             <tbody>
               {users.map((user) => (
                 <tr key={user._id} className="h-9 text-medium">
-                  <td>{user.name}</td>
+                  <td className="font-semibold">{user.name}</td>
                   <td>{user.email}</td>
-                  <td>{user?.role ? user.role : "Member"}</td>
+                  <td className="font-bold ">
+                    {user?.role ? user.role : "Member"}
+                  </td>
                 </tr>
               ))}
             </tbody>

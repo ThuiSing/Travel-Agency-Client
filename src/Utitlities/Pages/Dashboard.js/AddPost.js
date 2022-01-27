@@ -32,7 +32,7 @@ const AddPost = () => {
     axios
       .post("https://serene-ocean-67383.herokuapp.com/blogs", formData)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.insertedId) {
           alert("product added");
           setMessage("successfully added product");

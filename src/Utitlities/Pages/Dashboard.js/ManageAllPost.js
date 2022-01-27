@@ -49,10 +49,10 @@ const ManageAllPost = () => {
           />
         </div>
       ) : (
-        <div className="grid md:grid-cols-2">
+        <div className="grid md:grid-cols-2 gap-5">
           {blogs.map((data) => (
-            <div key={data._id} className="flex items-center border">
-              <div className="border-r w-1/3">
+            <div key={data._id} className="flex items-center shadow-sm">
+              <div className="w-1/3">
                 <img src={`data:image/jpeg;base64,${data?.img}`} alt="" />
               </div>
               <div className="w-2/3 space-y-2 p-2">

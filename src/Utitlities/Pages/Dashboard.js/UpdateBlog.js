@@ -25,7 +25,7 @@ const UpdateBlog = () => {
   }, [id]);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const file = data.img[0];
 
     const formData = new FormData();
@@ -36,11 +36,11 @@ const UpdateBlog = () => {
     formData.append("author", blog.author);
     formData.append("authorImg", blog.authorImg);
     formData.append("date", blog.date);
-    formData.append("status", data.status);
+    formData.append("status", blog.status);
     axios
       .put(`https://serene-ocean-67383.herokuapp.com/blogs/${id}`, formData)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.modifiedCount > 0) {
           alert("changed successfully");
         }
@@ -87,15 +87,13 @@ const UpdateBlog = () => {
               <h4>{blog.description}</h4>
             </div>
           </div>
-          <div className="md:w-1/2">
-            <h2 className="text-xl font-medium mb-10 text-center">
-              Enter Update Value Here
-            </h2>
+          <div className="md:w-1/2 ml-2">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <input
                   className="w-full p-3"
                   {...register("title", { required: true })}
+                  placeholder="Enter Title"
                 />
               </div>
               <div>
@@ -107,16 +105,6 @@ const UpdateBlog = () => {
               </div>
 
               <div>
-                <select
-                  rows="8"
-                  className="w-full p-3"
-                  {...register("status", { required: true })}
-                >
-                  <option value="pending">Pending</option>
-                  <option value="approved">Approved</option>
-                </select>
-              </div>
-              <div>
                 <textarea
                   rows="8"
                   className="w-full p-3"
@@ -126,7 +114,7 @@ const UpdateBlog = () => {
               </div>
 
               <input
-                className="px-6 py-2 bg-gray-800 text-white cursor-pointer hover:text-gray-800 hover:bg-white transition-all"
+                className="px-6 py-2 bg-neutral-800 text-white cursor-pointer hover:text-neutral-800 hover:bg-white transition-all"
                 type="submit"
                 value="Update"
               />

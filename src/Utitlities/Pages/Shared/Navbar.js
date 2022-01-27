@@ -1,18 +1,34 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import profileImg from "../../Images/profile.png";
 
 const Navbar = () => {
   const [sideMenu, setSideMenu] = useState(false);
   const { user, userLogOut } = useAuth();
+  const [showBgOnScroll, setShowBgOnScroll] = useState(false);
+  const location = useLocation();
+
   // console.log(user);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 10) {
+      setShowBgOnScroll(true);
+    } else {
+      setShowBgOnScroll(false);
+    }
+  });
+
   const handleLogOut = () => {
     const confirm = window.confirm("are you sure to Log Out?");
     confirm && userLogOut();
   };
   return (
-    <nav className="py-5">
+    <header
+      className={`md:fixed top-0 w-full z-50 py-6 ${
+        showBgOnScroll && "bg-slate-50 transition-all shadow-md"
+      }   ${location.pathname === "/" ? "bg-transparent" : "bg-slate-50"} `}
+    >
       <div className="sm:container mx-auto flex justify-between items-center">
         <div>
           <svg
@@ -156,7 +172,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 

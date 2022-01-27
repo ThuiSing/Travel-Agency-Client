@@ -10,6 +10,19 @@ const RequestedPosts = () => {
       .then((res) => setBlogs(res.data));
   }, []);
 
+  const handleApprove = (id) => {
+    const confirm = window.confirm("Are you sure to approve it?");
+    confirm &&
+      axios
+        .put(`http://localhost:5000/blogs/update-status/${id}`)
+        .then((res) => {
+          if (res.data.matchedCount > 0) {
+            alert("Successfully Approved");
+            const filter = blogs.filter((blog) => blog._id !== id);
+            setBlogs(filter);
+          }
+        });
+  };
   return (
     <div>
       <h1 className="text-3xl   font-medium mb-5">All Requested Blogs :</h1>
@@ -25,9 +38,21 @@ const RequestedPosts = () => {
             </tr>
           </thead>
           <tbody className="text-center">
-            {blogs.map((blog) => (
-              <SingleRequestedPost key={blog._id} blog={blog} />
-            ))}
+            {blogs.length <= 0 ? (
+              <tr className="h-8">
+                <td className="text-red-800 font-bold">
+                  No Requested blog Found
+                </td>
+              </tr>
+            ) : (
+              blogs.map((blog) => (
+                <SingleRequestedPost
+                  key={blog._id}
+                  blog={blog}
+                  handleApprove={handleApprove}
+                />
+              ))
+            )}
           </tbody>
         </table>
       </div>

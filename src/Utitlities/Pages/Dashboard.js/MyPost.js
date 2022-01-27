@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const MyPost = () => {
@@ -11,7 +12,7 @@ const MyPost = () => {
     axios
       .get(`https://serene-ocean-67383.herokuapp.com/blogs/${user.email}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setLoader(false);
         setPost(res.data);
       })
@@ -77,9 +78,11 @@ const MyPost = () => {
                   >
                     Cancel
                   </button>
-                  <button className="ml-4 text-green-800 bg-green-300 px-5 py-2 font-medium hover:bg-white hover:text-green-800 transition-all">
-                    Edit
-                  </button>
+                  <Link to={`/dashboard/manage-post/${data._id}`}>
+                    <button className=" ml-5 text-green-800 bg-green-300 px-5 py-2 font-medium hover:bg-white hover:text-green-800 transition-all">
+                      Edit
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
