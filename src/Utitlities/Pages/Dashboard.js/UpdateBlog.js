@@ -3,6 +3,35 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import Resizer from "react-image-file-resizer";
+
+const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      900,
+      500,
+      "png",
+      60,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "base64"
+    );
+  });
+
+const dataURIToBlob = (dataURI) => {
+  const splitDataURI = dataURI.split(",");
+  const byteString =
+    splitDataURI[0].indexOf("base64") >= 0
+      ? atob(splitDataURI[1])
+      : decodeURI(splitDataURI[1]);
+  const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
+  const ia = new Uint8Array(byteString.length);
+  for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+  return new Blob([ia], { type: mimeString });
+};
 
 const UpdateBlog = () => {
   const { id } = useParams();
@@ -33,10 +62,12 @@ const UpdateBlog = () => {
   const onSubmit = async (data) => {
     // console.log(data);
     const file = data.img[0];
+    const image = await resizeFile(file);
+    const newFile = dataURIToBlob(image);
 
     const formData = new FormData();
     formData.append("title", data.title);
-    formData.append("image", file);
+    formData.append("image", newFile);
     formData.append("description", data.description);
     formData.append("email", blog.email);
     formData.append("author", blog.author);

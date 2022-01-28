@@ -17,6 +17,7 @@ import Register from "./Utitlities/Pages/Login/Register/Register";
 import AdminRoute from "./Utitlities/Pages/Routes/AdminRoute";
 import PrivateRoute from "./Utitlities/Pages/Routes/PrivateRoute";
 import SingleBlogs from "./Utitlities/Pages/Shared/SingleBlogs";
+import Error from "./Utitlities/Pages/Error/Error";
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
                 }
               />
             </Route>
+            <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

@@ -11,13 +11,13 @@ const SharedBlogs = () => {
 
   useEffect(() => {
     let cancel = false;
-
     setLoader(true);
     axios
       .get(
         `https://serene-ocean-67383.herokuapp.com/blogs/status?page=${selectedPage}&&showPages=${limit}`
       )
       .then((res) => {
+        console.log(res);
         if (cancel) return;
         setBlogs(res.data.result);
         const count = res.data.count;
@@ -25,7 +25,6 @@ const SharedBlogs = () => {
         setPage(showPage);
         setLoader(false);
       })
-
       .finally(() => setLoader(false));
     return () => {
       cancel = true;

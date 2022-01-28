@@ -17,11 +17,11 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex justify-between items-center bg-[#FFF9EF] px-5 ">
-      <div className="w-1/2">
+    <div className="h-screen md:flex justify-between items-center bg-[#FFF9EF] px-5 ">
+      <div className=" md:w-1/2">
         <img src={img} alt="" />
       </div>
-      <div className="w-1/2">
+      <div className="md:w-1/2">
         <div className="text-center">
           <Link to="/">
             <h2 className="text-3xl mb-8 font-bold">SMARTER TRAVELS</h2>
