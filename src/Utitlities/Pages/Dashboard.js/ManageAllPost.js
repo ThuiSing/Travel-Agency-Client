@@ -44,7 +44,7 @@ const ManageAllPost = () => {
   };
   return (
     <div>
-      <h2 className="text-2xl font-semibold">My post's</h2>
+      <h2 className="text-2xl font-semibold">Edit all post's</h2>
       {loader ? (
         <div className="w-full flex justify-center items-center">
           <img
